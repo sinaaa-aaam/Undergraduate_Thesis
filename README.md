@@ -1,245 +1,170 @@
-################################################################################
+# Hybrid DL-LLM Framework for Atopic Disease Prediction
 
-# HYBRID DL-LLM FRAMEWORK FOR ATOPIC DISEASE PREDICTION
+**Undergraduate Thesis**  
+**Sinam Afi Serwa Ametewee**  
+Ashesi University | Computer Science Department | 2026  
 
-# Undergraduate Thesis - Sinam Afi Serwa Ametewee
+---
 
-# Ashesi University | Computer Science Department | 2026
+# 🔗 Repository
 
-################################################################################
+Full code and documentation available here:  
+https://github.com/sinaaa-aaam/Undergraduate_Thesis  
 
-# GITHUB REPOSITORY
+---
 
-# 
+# ⚙️ Installation
 
-# Full code and documentation available at:
-
-# https://github.com/sinaaa-aaam/Undergraduate_Thesis
-
-################################################################################
-
-# INSTALLATION INSTRUCTIONS
-
-################################################################################
-
-# STEP 1: CLONE THE REPOSITORY
-
-# 
-
+## 1. Clone the Repository
+```bash
 git clone https://github.com/sinaaa-aaam/Undergraduate_Thesis.git
 cd Undergraduate_Thesis
+```
 
-# STEP 2: INSTALL PYTHON DEPENDENCIES
-
-# 
-
+## 2. Install Dependencies
+```bash
 pip install -r requirements.txt
+```
 
-# Alternatively, install manually:
-
+### Alternatively (manual install):
+```bash
 pip install numpy pandas scikit-learn
 pip install torch pytorch-tabnet
 pip install tabpfn
 pip install google-generativeai
+```
 
-# STEP 3: DOWNLOAD ISAAC DATASET
+---
 
-# 
+# 📊 Dataset Setup (ISAAC)
 
-# 1. Register at: https://datacatalogue.ukdataservice.ac.uk/studies/study/8131
+1. Register here:  
+   https://datacatalogue.ukdataservice.ac.uk/studies/study/8131  
 
-# 2. Download ISAAC Phase III questionnaires for children aged 6-7 years
+2. Download:
+   - ISAAC Phase III questionnaires (children aged 6–7)
 
-# 3. Place files in data/ directory:
+3. Place files in the `data/` directory:
 
-# - isaac_core_questionnaire.csv
+```
+data/
+├── isaac_core_questionnaire.csv
+├── isaac_environmental_questionnaire.csv
+```
 
-# - isaac_environmental_questionnaire.csv
+---
 
-# STEP 4: CONFIGURE GEMINI API KEY
+# 🔑 API Configuration (Gemini)
 
-# 
+Get a free API key:  
+👉 https://aistudio.google.com/app/apikey  
 
-# Get free API key from: https://aistudio.google.com/app/apikey
+## Google Colab
+- Click 🔑 (Secrets) in sidebar  
+- Add: `GEMINI_API_KEY`  
+- Enable **Notebook access**
 
-# 
+## Local Jupyter
+```bash
+echo "GEMINI_API_KEY=your_key_here" > .env
+```
 
-# For Google Colab:
+---
 
-# - Click the key icon (🔑) in left sidebar
+# ▶️ How to Run
 
-# - Add secret: GEMINI_API_KEY
+## Option 1: Google Colab (Recommended)
+1. Upload `Undergraduate_Thesis.ipynb`
+2. Runtime → Change runtime → GPU (optional)
+3. Runtime → **Run all**
 
-# - Enable “Notebook access”
+⏱ Expected runtime: ~45 minutes  
 
-# 
+---
 
-# For local Jupyter:
-
-# - Create .env file: echo “GEMINI_API_KEY=your_key_here” > .env
-
-################################################################################
-
-# HOW TO RUN
-
-################################################################################
-
-# OPTION 1: GOOGLE COLAB (RECOMMENDED)
-
-# 
-
-# 1. Upload Undergraduate_Thesis.ipynb to Google Colab
-
-# 2. Runtime → Change runtime type → GPU (optional, for faster training)
-
-# 3. Runtime → Run all
-
-# 4. Expected runtime: ~45 minutes
-
-# OPTION 2: LOCAL JUPYTER NOTEBOOK
-
-# 
-
+## Option 2: Local Jupyter Notebook
+```bash
 jupyter notebook Undergraduate_Thesis.ipynb
+```
 
-# Then: Cell → Run All
+Then: **Cell → Run All**
 
-################################################################################
+---
 
-# SYSTEM REQUIREMENTS
+# 💻 System Requirements
 
-################################################################################
+## Software
+- Python 3.8+
+- Jupyter Notebook or Google Colab  
 
-# Software:
+## Hardware
+- Minimum: 8GB RAM  
+- Recommended: 16GB RAM  
+- GPU (optional, speeds up training)
 
-# - Python 3.8 or higher
+## Runtime Estimates
+- Data preprocessing: ~2 minutes  
+- Model training (6 models): ~40 minutes  
+- LLM integration: ~1 minute/sample  
 
-# - Jupyter Notebook or Google Colab
+---
 
-# - 8GB RAM minimum (16GB recommended)
+# 🚀 What This System Does
 
-# - GPU optional (speeds up TabNet training)
+This hybrid **Deep Learning + LLM framework**:
 
-# Expected Runtime:
+- Trains 3 models:
+  - TabNet  
+  - TabPFN  
+  - MLP  
 
-# - Data preprocessing: ~2 minutes
+- Compares:
+  - Clinical-only features  
+  - Clinical + environmental features  
 
-# - Model training (6 models total): ~40 minutes
+- Demonstrates:
+  - **+4.4% AUC improvement** with environmental data  
 
-# - LLM integration: ~1 minute per sample
+- Uses Gemini LLM to:
+  - Convert predictions into **clinical recommendations**
 
-################################################################################
+---
 
-# WHAT THIS SYSTEM DOES
+# 📈 Key Results
 
-################################################################################
+| Model   | AUC   | ΔAUC |
+|--------|------|------|
+| TabNet | 0.875 | +0.046 |
+| TabPFN | 0.873 | +0.044 |
+| MLP    | 0.870 | +0.041 |
 
-# This hybrid DL-LLM framework:
+**Population Impact:**  
+➡️ ~440 additional children correctly classified per 10,000  
 
-# 
+---
 
-# 1. Trains 3 deep learning models (TabNet, TabPFN, MLP) on ISAAC data
+---
 
-# 2. Compares clinical-only vs clinical+environmental features
+# 🛠 Troubleshooting
 
-# 3. Demonstrates +4.4% AUC improvement from environmental data
+## ModuleNotFoundError
+```bash
+pip install -r requirements.txt
+```
 
-# 4. Uses Gemini LLM to translate predictions into clinical recommendations
+## API Key Not Working
+- Ensure `GEMINI_API_KEY` is set correctly  
+- Check Colab Secrets or `.env` file  
 
-# 
+## Out of Memory Errors
+- Use Google Colab (or Colab Pro)  
+- Reduce batch size  
 
-# Key Results:
+## Dataset Not Loading
+- Confirm files exist in `data/`  
+- Verify filenames match exactly  
 
-# - TabNet:  AUC 0.875 (ΔAUC +0.046)
+---
+ 
 
-# - TabPFN:  AUC 0.873 (ΔAUC +0.044)
-
-# - MLP:     AUC 0.870 (ΔAUC +0.041)
-
-# 
-
-# Population Impact: 440 additional children correctly classified per 10,000
-
-################################################################################
-
-# PROJECT STRUCTURE
-
-################################################################################
-
-# Undergraduate_Thesis/
-
-# ├── Undergraduate_Thesis.ipynb    # Main notebook (all experiments)
-
-# ├── README.md                      # Detailed documentation
-
-# ├── requirements.txt               # Python dependencies
-
-# ├── USER_MANUAL.md                 # Comprehensive user guide
-
-# ├── data/                          # ISAAC dataset (download separately)
-
-# ├── models/                        # Saved models (generated after running)
-
-# ├── results/                       # Experiment outputs
-
-# └── figures/                       # Visualizations
-
-################################################################################
-
-# TROUBLESHOOTING
-
-################################################################################
-
-# Problem: ModuleNotFoundError
-
-# Solution: pip install -r requirements.txt
-
-# Problem: API key not recognized
-
-# Solution: Add GEMINI_API_KEY to Colab Secrets or .env file
-
-# Problem: Out of memory errors
-
-# Solution: Use Google Colab Pro or reduce batch size in notebook
-
-# Problem: Dataset not loading
-
-# Solution: Verify CSV files are in data/ directory with correct filenames
-
-################################################################################
-
-# ADDITIONAL DOCUMENTATION
-
-################################################################################
-
-# For detailed instructions, see:
-
-# - README.md (project overview)
-
-# - USER_MANUAL.md (step-by-step guide with troubleshooting)
-
-# - requirements.txt (complete dependency list)
-
-# For questions or issues:
-
-# - Open an issue: https://github.com/sinaaa-aaam/Undergraduate_Thesis/issues
-
-# - Contact: Sinam Afi Serwa Ametewee (Ashesi University)
-
-################################################################################
-
-# LICENSE
-
-################################################################################
-
-# MIT License
-
-# Copyright (c) 2026 Sinam Afi Serwa Ametewee
-
-# See LICENSE file for full details
-
-################################################################################
-
-# END OF README
-
-################################################################################
+---
