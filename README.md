@@ -44,10 +44,9 @@ pip install google-generativeai
 2. Download:
    - ISAAC Phase III questionnaires (children aged 6–7)
 
-3. Place files in the `data/` directory:
+3. Place files in the directory:
 
 ```
-data/
 ├── isaac_core_questionnaire.csv
 ├── isaac_environmental_questionnaire.csv
 ```
