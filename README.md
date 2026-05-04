@@ -160,7 +160,7 @@ pip install -r requirements.txt
 - Reduce batch size  
 
 ## Dataset Not Loading
-- Confirm files exist in `data/`  
+- Confirm files exist in directory  
 - Verify filenames match exactly  
 
 ---
