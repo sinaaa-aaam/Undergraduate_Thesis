@@ -47,8 +47,8 @@ pip install google-generativeai
 3. Place files in the directory:
 
 ```
-├── isaac_core_questionnaire.csv
-├── isaac_environmental_questionnaire.csv
+├── isaac3_6_7_core_ques_data.csv
+├── isaac3_6_7_envt_ques_data.csv
 ```
 
 ---
